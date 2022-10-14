@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "docker:init": "docker build -t a-service . && docker run -dp 8080:8080 a-service"
+  },
   "dependencies": {
     "express": "^4.18.2"
   }
