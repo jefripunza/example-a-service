@@ -4,9 +4,20 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "node ./dist/index.js",
+    "dev": "npx nodemon",
+    "remove:node_modules": "npx cross-env rm -rf ./node_modules",
+    "clean": "npx cross-env rm -rf dist debug.log package-lock.json yarn-error.log yarn.lock",
+    "build": "npx yarn clean && npx ncc build ./index.js --no-cache --minify --transpile-only",
     "docker:init": "docker build -t a-service . && docker run -dp 8080:8080 a-service"
   },
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.34.0",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.19",
+    "yarn": "^1.22.19"
   }
 }
